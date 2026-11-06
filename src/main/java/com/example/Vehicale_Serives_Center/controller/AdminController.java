@@ -27,7 +27,7 @@ public class AdminController {
     // Home Page
     // @GetMapping("/")
     // public String homePage() {
-    //     return "admin/dashboard";
+    // return "admin/dashboard";
     // }
 
     // Add Employee
@@ -40,8 +40,8 @@ public class AdminController {
     // Old Add Employee Method
     // @PostMapping("/add-employee")
     // public String addEmployee(@ModelAttribute Employee employee) {
-    //     employeeService.addEmployee(employee);
-    //     return "redirect:/admin/add-employee";
+    // employeeService.addEmployee(employee);
+    // return "redirect:/admin/add-employee";
     // }
 
     @PostMapping("/add-employee")
@@ -80,8 +80,7 @@ public class AdminController {
     @PostMapping("/update-employee")
     public String updateEmployee(@ModelAttribute Employee employee) {
 
-        Optional<Employee> existingEmployee =
-                employeeService.getEmployeeById(employee.getEmployeeId());
+        Optional<Employee> existingEmployee = employeeService.getEmployeeById(employee.getEmployeeId());
 
         if (existingEmployee.isPresent()) {
 
@@ -146,5 +145,11 @@ public class AdminController {
         }
 
         return "admin/deleteEmployee";
+    }
+
+    // Admin Dashboard
+    @GetMapping("/dashboard")
+    public String adminDashboard() {
+        return "admin/dashboard";
     }
 }

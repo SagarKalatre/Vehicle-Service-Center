@@ -289,4 +289,10 @@ public class EmployeeController {
         return "redirect:/employee/fetch-service";
     }
 
+    // Employee Dashboard
+    @GetMapping("/dashboard")
+    public String employeeDashboard() {
+        return "employee/dashboard";
+    }
+
 }
