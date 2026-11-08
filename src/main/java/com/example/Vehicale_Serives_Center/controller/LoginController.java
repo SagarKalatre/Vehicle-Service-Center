@@ -34,7 +34,7 @@ public class LoginController {
             Login user = login.get();
 
             session.setAttribute("username", user.getUsername());
-            session.setAttribute("password", user.getPassword());
+            session.setAttribute("loginType", user.getLoginType())  ;
 
             if ("Admin".equalsIgnoreCase(user.getLoginType())) {
                 return "redirect:/admin/dashboard";

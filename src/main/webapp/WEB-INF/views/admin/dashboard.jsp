@@ -19,7 +19,10 @@ pageEncoding="UTF-8"%>
         <a href="/admin/add-employee">Add Employee</a><br>
         <a href="/admin/fetch-employee">Fetch Employee</a><br>
         <a href="/admin/fetch-employee">Update Employee (Search by ID)</a><br>
-        <a href="/admin/delete-employee">Delete Employee</a>
+        <a href="/admin/delete-employee">Delete Employee</a><br>
+
+        <!-- ADDED: View All Employees -->
+        <a href="/admin/employee-list">View All Employees</a>
 
         <form action="/logout" method="get">
             <button type="submit">Logout</button>

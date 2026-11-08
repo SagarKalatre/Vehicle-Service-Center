@@ -44,9 +44,11 @@
 
 package com.example.Vehicale_Serives_Center.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.Vehicale_Serives_Center.dao.EmployeeRepository;
@@ -92,6 +94,12 @@ public class EmployeeService {
 
     public Optional<Employee> getEmployeeById(int employeeId) {
         return employeeRepository.findById(employeeId);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll(
+            Sort.by(Sort.Direction.DESC, "employeeId")
+        );
     }
 
     public void deleteEmployee(int employeeId) {

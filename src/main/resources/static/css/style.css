@@ -1,0 +1,234 @@
+
+/* ================================
+   VEHICLE SERVICE CENTER - THEME
+================================ */
+
+:root {
+    --navy: #172338;
+    --navy-light: #243650;
+    --blue: #3478D4;
+    --blue-hover: #2864B5;
+    --background: #F3F6FA;
+    --white: #FFFFFF;
+    --text: #253247;
+    --muted: #718096;
+    --border: #E2E8F0;
+    --danger: #DC4545;
+    --success: #269B70;
+}
+
+/* Global */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 15px;
+}
+
+h1, h2, h3 {
+    color: var(--navy);
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--blue-hover);
+}
+
+/* Forms */
+
+form {
+    margin-top: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
+    max-width: 450px;
+    padding: 11px 13px;
+    margin: 7px 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--white);
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52, 120, 212, 0.12);
+}
+
+/* Buttons */
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 7px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--blue-hover);
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: var(--navy);
+    color: var(--white);
+    text-align: left;
+}
+
+th, td {
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+tr:hover td {
+    background: #F7FAFE;
+}
+
+/* Content cards */
+
+.card {
+    background: var(--white);
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(23, 35, 56, 0.05);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    input, select, textarea {
+        max-width: 100%;
+    }
+}
+
+
+
+/* ================================
+   HEADER DESIGN
+================================ */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 35px;
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.header-brand h2 {
+    margin: 0;
+    color: white;
+    font-size: 19px;
+}
+
+.header-brand span {
+    color: #AAB8CC;
+    font-size: 12px;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.user-label {
+    color: #AAB8CC;
+    font-size: 11px;
+}
+
+.user-info strong {
+    color: white;
+    font-size: 14px;
+}
+
+.logout-btn {
+    padding: 9px 17px;
+    border: 1px solid #64748B;
+    border-radius: 7px;
+    color: white;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .main-header {
+        padding: 13px 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .header-brand h2 {
+        font-size: 16px;
+    }
+}

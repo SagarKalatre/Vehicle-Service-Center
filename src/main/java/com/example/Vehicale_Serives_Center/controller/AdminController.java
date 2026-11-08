@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.Vehicale_Serives_Center.model.Employee;
 import com.example.Vehicale_Serives_Center.service.EmployeeService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -45,21 +47,38 @@ public class AdminController {
     // }
 
     @PostMapping("/add-employee")
-    public String addEmployee(@ModelAttribute Employee employee) {
+    public String addEmployee(@ModelAttribute Employee employee, Model model) {
 
         // Debugging
-        // System.out.println("First Name: " + employee.getFirstname());
-        // System.out.println("Middle Name: " + employee.getMiddlename());
-        // System.out.println("Last Name: " + employee.getLastname());
-        // System.out.println("Phone 1: " + employee.getPhone_1());
-        // System.out.println("Phone 2: " + employee.getPhone_2());
-        // System.out.println("Email: " + employee.getEmailId());
-        // System.out.println("DOB: " + employee.getDOB());
-        // System.out.println("Gender: " + employee.getGender());
+        // // System.out.println("First Name: " + employee.getFirstname());
+        // // System.out.println("Middle Name: " + employee.getMiddlename());
+        // // System.out.println("Last Name: " + employee.getLastname());
+        // // System.out.println("Phone 1: " + employee.getPhone_1());
+        // // System.out.println("Phone 2: " + employee.getPhone_2());
+        // // System.out.println("Email: " + employee.getEmailId());
+        // // System.out.println("DOB: " + employee.getDOB());
+        // // System.out.println("Gender: " + employee.getGender());
 
-        employeeService.addEmployee(employee);
+        // employeeService.addEmployee(employee);
+        // return "redirect:/admin/add-employee";
 
-        return "redirect:/admin/add-employee";
+        // try {
+        //     employeeService.addEmployee(employee);
+        //     model.addAttribute("message", "Employee Added Successfully..!");
+        // } catch (IllegalArgumentException e) {
+        //     model.addAttribute("message", e.getMessage());
+        // }
+        // return "redirect:/admin/add-employee";
+
+
+        try {
+            Employee savedEmployee = employeeService.addEmployee(employee);
+            model.addAttribute("message", savedEmployee);
+            return "admin/employeeAdded";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "admin/addEmployee";
+        }
     }
 
     // Update Employee
@@ -151,5 +170,23 @@ public class AdminController {
     @GetMapping("/dashboard")
     public String adminDashboard() {
         return "admin/dashboard";
+    }
+
+    @GetMapping ("/employee-portal")
+    public String employeePortel(@RequestParam int employeeId, Model model, HttpSession session) {
+        Optional<Employee> employee = employeeService.getEmployeeById(employeeId);
+        if (employee.isPresent()) {
+            session.setAttribute("adminViewingEmployeeById", employee.get().getEmployeeId());
+            session.setAttribute("adminViewingEmployeeByName", employee.get().getFirstname());
+            
+            return "employee/dashboard";
+        } 
+        return "redirect:/admin/fetch-employee";
+    }
+
+    @GetMapping ("employee-list")
+    public String employeeList(Model model) {
+        model.addAttribute("employees", employeeService.getAllEmployees());
+        return "admin/employeeList";
     }
 }

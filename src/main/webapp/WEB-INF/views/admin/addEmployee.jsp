@@ -12,6 +12,7 @@ pageEncoding="UTF-8"%>
     <body>
 
         <h2>Add Employee Details</h2>
+        <p style="color: red;">${message}</p>
 
         <form action="${pageContext.request.contextPath}/admin/add-employee" method="post">
 
