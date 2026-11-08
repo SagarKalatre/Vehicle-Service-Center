@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+<%@ include file="/WEB-INF/views/header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,14 +52,22 @@ pageEncoding="UTF-8"%>
             </select>
             <br><br>
 
+            <label>Username:</label>
+            <input type="text" name="login.username" required>
+            <br><br>
+
+            <label>Password:</label>
+            <input type="password" name="login.password" minlength="8" required>
+            <br><br>
+
             <%-- <label>Date of Join:</label>
             <input type="date" name="dateOfJoin">
             <br><br>
-
+            
             <label>Date of Left:</label>
             <input type="date" name="dateOfLeft">
             <br><br>
-
+            
             <label>Employee Type:</label>
             <input type="text" name="employeeType">
             <br><br> --%>
