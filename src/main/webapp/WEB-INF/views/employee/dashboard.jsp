@@ -8,57 +8,156 @@ pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Employee Dashboard</title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
 
-        <h1>Welcome to Employee Dashboard</h1>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
 
-        <c:choose>
+    <div class="dashboard-layout">
 
-            <c:when test="${not empty sessionScope.adminViewingEmployeeId}">
+        <aside class="sidebar">
 
-                <h3>Admin: ${sessionScope.username}</h3>
+            <h3>EMPLOYEE PANEL</h3>
 
-                <h3>
-                    Viewing Employee: ${sessionScope.adminViewingEmployeeName}
-                </h3>
+            <a href="${pageContext.request.contextPath}/employee/dashboard"
+               class="active">
+                Dashboard
+            </a>
 
-                <a href="${pageContext.request.contextPath}/admin/dashboard">
-                    Back to Admin Dashboard
-                </a>
+            <a href="${pageContext.request.contextPath}/employee/add-customer">
+                Add Customer
+            </a>
 
-            </c:when>
+            <a href="${pageContext.request.contextPath}/employee/fetch-customer">
+                View Customers
+            </a>
 
-            <c:otherwise>
+            <a href="${pageContext.request.contextPath}/employee/delete-customer">
+                Delete Customer
+            </a>
 
-                <h3>Welcome, ${sessionScope.username}</h3>
+            <a href="${pageContext.request.contextPath}/employee/add-vehicle">
+                Add Vehicle
+            </a>
 
-            </c:otherwise>
+            <a href="${pageContext.request.contextPath}/employee/fetch-vehicle">
+                View Vehicles
+            </a>
 
-        </c:choose>
+            <a href="${pageContext.request.contextPath}/employee/add-service">
+                Add Service Job Card
+            </a>
 
-        <h2>Employee Options</h2>
+            <a href="${pageContext.request.contextPath}/employee/fetch-service">
+                View Service Job Cards
+            </a>
 
-        <a href="${pageContext.request.contextPath}/employee/add-customer">Add Customer</a><br>
+        </aside>
 
-        <a href="${pageContext.request.contextPath}/employee/fetch-customer">Fetch Customer</a><br>
+        <main class="dashboard-content">
 
-        <a href="${pageContext.request.contextPath}/employee/add-vehicle">Add Vehicle</a><br>
+            <c:choose>
 
-        <a href="${pageContext.request.contextPath}/employee/fetch-vehicle">Fetch Vehicle</a><br>
+                <c:when test="${not empty sessionScope.adminViewingEmployeeId}">
 
-        <a href="${pageContext.request.contextPath}/employee/add-service">Add Service Job Card</a><br>
+                    <h1>Employee Dashboard</h1>
 
-        <a href="${pageContext.request.contextPath}/employee/fetch-service">Fetch Service Job Card</a>
+                    <div class="dashboard-welcome">
+                        <h2>Viewing Employee: ${sessionScope.adminViewingEmployeeName}</h2>
+                        <p>Admin: ${sessionScope.username}</p>
 
-        <c:if test="${empty sessionScope.adminViewingEmployeeId}">
-            <form action="${pageContext.request.contextPath}/logout" method="get">
-                <button type="submit">Logout</button>
-            </form>
-        </c:if>
+                        
+                        <a href="${pageContext.request.contextPath}/admin/dashboard"
+                            class="back-admin-btn">
+                            ← Back to Admin Dashboard
+                        </a>
 
-    </body>
+                    </div>
+
+                </c:when>
+
+                <c:otherwise>
+
+                    <h1>Employee Dashboard</h1>
+
+                    <div class="dashboard-welcome">
+                        <h2>Welcome, ${sessionScope.username}!</h2>
+                        <p>Manage customers, vehicles and service job cards.</p>
+                    </div>
+
+                </c:otherwise>
+
+            </c:choose>
+
+            <h2>Service Center Operations</h2>
+
+            <div class="dashboard-cards">
+
+                <div class="dashboard-card">
+                    <h3>Add Customer</h3>
+                    <p>Register a new customer in the system.</p>
+                    <a href="${pageContext.request.contextPath}/employee/add-customer">
+                        Add Customer →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>View Customers</h3>
+                    <p>Search and manage customer records.</p>
+                    <a href="${pageContext.request.contextPath}/employee/fetch-customer">
+                        View Customers →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Delete Customer</h3>
+                    <p>Remove a customer record from the system.</p>
+                    <a href="${pageContext.request.contextPath}/employee/delete-customer">
+                        Delete Customer →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Add Vehicle</h3>
+                    <p>Register a customer's vehicle.</p>
+                    <a href="${pageContext.request.contextPath}/employee/add-vehicle">
+                        Add Vehicle →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>View Vehicles</h3>
+                    <p>Find and manage registered vehicles.</p>
+                    <a href="${pageContext.request.contextPath}/employee/fetch-vehicle">
+                        View Vehicles →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Add Service Job Card</h3>
+                    <p>Create a new vehicle service job card.</p>
+                    <a href="${pageContext.request.contextPath}/employee/add-service">
+                        Create Job Card →
+                    </a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>View Service Job Cards</h3>
+                    <p>View and manage service job cards.</p>
+                    <a href="${pageContext.request.contextPath}/employee/fetch-service">
+                        View Job Cards →
+                    </a>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
 </html>

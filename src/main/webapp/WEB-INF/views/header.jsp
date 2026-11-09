@@ -15,16 +15,24 @@ href="${pageContext.request.contextPath}/css/style.css">
         </div>
     </div>
 
+
     <div class="header-user">
 
+        <div class="user-avatar">
+            <span>👤</span>
+        </div>
+
         <div class="user-info">
-            <span class="user-label">Welcome back,</span>
             <strong>${sessionScope.username}</strong>
+
+            <span class="role-badge">
+                ${sessionScope.loginType}
+            </span>
         </div>
 
         <a href="${pageContext.request.contextPath}/logout"
         class="logout-btn">
-        Logout
+        <span>↪</span> Logout
     </a>
 
 </div>

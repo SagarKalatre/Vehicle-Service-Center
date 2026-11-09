@@ -1,26 +1,128 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
-<head><title>Add Service</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Service</title>
+
+    <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/css/style.css">
+</head>
 <body>
-    <h2>Add Service Details</h2>
 
-    <form action="${pageContext.request.contextPath}/employee/add-service" method="post">
-        Service Start Date:
-        <input type="date" name="serviceStartDate" required><br><br>
+    <div class="dashboard-layout">
 
-        Service End Date:
-        <input type="date" name="serviceEndDate"><br><br>
+        <aside class="sidebar">
 
-        Contact Number:
-        <input type="text" name="contactNumber" required><br><br>
+            <h3>EMPLOYEE PANEL</h3>
 
-        Vehicle ID:
-        <input type="number" name="vehicle.vehicleId" required><br><br>
+            <a href="${pageContext.request.contextPath}/employee/dashboard">
+                Dashboard
+            </a>
 
-        <button type="submit">Add Service</button>
-    </form>
+            <a href="${pageContext.request.contextPath}/employee/add-customer">
+                Add Customer
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-customer">
+                View Customers
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/delete-customer">
+                Delete Customer
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/add-vehicle">
+                Add Vehicle
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-vehicle">
+                View Vehicles
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/add-service"
+                class="active">
+                Add Service Job Card
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-service">
+                View Service Job Cards
+            </a>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <h1>Add Service Job Card</h1>
+
+            <p class="dashboard-subtitle">
+                Register a new service for a customer's vehicle.
+            </p>
+
+            <div class="form-card">
+
+                <h2>Service Information</h2>
+
+                <form action="${pageContext.request.contextPath}/employee/add-service"
+                    method="post">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Service Start Date</label>
+                            <input type="date"
+                                name="serviceStartDate"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Service End Date</label>
+                            <input type="date"
+                                name="serviceEndDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="text"
+                                name="contactNumber"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Vehicle ID</label>
+                            <input type="number"
+                                name="vehicle.vehicleId"
+                                placeholder="Enter Vehicle ID"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <div class="form-actions">
+
+                        <a href="${pageContext.request.contextPath}/employee/dashboard"
+                            class="cancel-btn">
+                            Cancel
+                        </a>
+
+                        <button type="submit">
+                            Add Service
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
 </body>
 </html>

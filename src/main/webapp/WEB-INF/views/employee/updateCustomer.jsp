@@ -1,33 +1,180 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <%@ include file="/WEB-INF/views/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
-<head><title>Update Customer</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Update Customer</title>
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
+</head>
 <body>
-    <h2>Update Customer</h2>
 
-    <form action="${pageContext.request.contextPath}/employee/update-customer" method="post">
-        Customer ID:
-        <input type="number" name="customerId" value="${customer.customerId}" readonly><br><br>
+    <div class="dashboard-layout">
 
-        First Name: <input type="text" name="firstname" value="${customer.firstname}" required><br><br>
-        Middle Name: <input type="text" name="middlename" value="${customer.middlename}"><br><br>
-        Last Name: <input type="text" name="lastname" value="${customer.lastname}" required><br><br>
-        Phone 1: <input type="text" name="phone_1" value="${customer.phone_1}"><br><br>
-        Phone 2: <input type="text" name="phone_2" value="${customer.phone_2}"><br><br>
-        Email: <input type="email" name="emailId" value="${customer.emailId}"><br><br>
-        DOB: <input type="date" name="DOB" value="${customer.DOB}"><br><br>
+        <aside class="sidebar">
 
-        Gender:
-        <select name="gender">
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select><br><br>
+            <h3>EMPLOYEE PANEL</h3>
 
-        <button type="submit">Update Customer</button>
-    </form>
+            <a href="${pageContext.request.contextPath}/employee/dashboard">
+                Dashboard
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/add-customer">
+                Add Customer
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-customer"
+               class="active">
+                View Customers
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/add-vehicle">
+                Add Vehicle
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-vehicle">
+                View Vehicles
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/add-service">
+                Add Service Job Card
+            </a>
+
+            <a href="${pageContext.request.contextPath}/employee/fetch-service">
+                View Service Job Cards
+            </a>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <h1>Update Customer</h1>
+
+            <p class="dashboard-subtitle">
+                Modify the customer's personal information.
+            </p>
+
+            <div class="form-card">
+
+                <form action="${pageContext.request.contextPath}/employee/update-customer"
+                      method="post">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Customer ID</label>
+                            <input type="number"
+                                   name="customerId"
+                                   value="${customer.customerId}"
+                                   readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text"
+                                   name="firstname"
+                                   value="${customer.firstname}"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text"
+                                   name="middlename"
+                                   value="${customer.middlename}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text"
+                                   name="lastname"
+                                   value="${customer.lastname}"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number 1</label>
+                            <input type="text"
+                                   name="phone_1"
+                                   value="${customer.phone_1}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number 2</label>
+                            <input type="text"
+                                   name="phone_2"
+                                   value="${customer.phone_2}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email"
+                                   name="emailId"
+                                   value="${customer.emailId}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date"
+                                   name="DOB"
+                                   value="${customer.DOB}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+
+                            <select name="gender">
+
+                                <option value="">Select Gender</option>
+
+                                <option value="Male"
+                                    ${customer.gender == 'Male' ? 'selected' : ''}>
+                                    Male
+                                </option>
+
+                                <option value="Female"
+                                    ${customer.gender == 'Female' ? 'selected' : ''}>
+                                    Female
+                                </option>
+
+                                <option value="Other"
+                                    ${customer.gender == 'Other' ? 'selected' : ''}>
+                                    Other
+                                </option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <div class="form-actions">
+
+                        <button type="submit">
+                            Update Customer
+                        </button>
+
+                        <a href="${pageContext.request.contextPath}/employee/fetch-customer"
+                           class="cancel-btn">
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 charset=UTF-8"
 pageEncoding="UTF-8"%>
 
-<%@ include file="WEB_INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,6 +31,6 @@ pageEncoding="UTF-8"%>
     <a href="${pageContext.request.contextPath}/admin/dashboard">
         <button type="button">Back to Admin Home</button>
     </a>
-    
+
 </body>
 </html>

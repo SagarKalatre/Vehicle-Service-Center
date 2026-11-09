@@ -63,13 +63,12 @@ public class AdminController {
         // return "redirect:/admin/add-employee";
 
         // try {
-        //     employeeService.addEmployee(employee);
-        //     model.addAttribute("message", "Employee Added Successfully..!");
+        // employeeService.addEmployee(employee);
+        // model.addAttribute("message", "Employee Added Successfully..!");
         // } catch (IllegalArgumentException e) {
-        //     model.addAttribute("message", e.getMessage());
+        // model.addAttribute("message", e.getMessage());
         // }
         // return "redirect:/admin/add-employee";
-
 
         try {
             Employee savedEmployee = employeeService.addEmployee(employee);
@@ -172,19 +171,30 @@ public class AdminController {
         return "admin/dashboard";
     }
 
-    @GetMapping ("/employee-portal")
-    public String employeePortel(@RequestParam int employeeId, Model model, HttpSession session) {
+    @GetMapping("/employee-portal")
+    public String employeePortal(@RequestParam int employeeId,
+            Model model,
+            HttpSession session) {
+
         Optional<Employee> employee = employeeService.getEmployeeById(employeeId);
+
         if (employee.isPresent()) {
-            session.setAttribute("adminViewingEmployeeById", employee.get().getEmployeeId());
-            session.setAttribute("adminViewingEmployeeByName", employee.get().getFirstname());
-            
+
+            Employee emp = employee.get();
+
+            session.setAttribute("adminViewingEmployeeId",
+                    emp.getEmployeeId());
+
+            session.setAttribute("adminViewingEmployeeName",
+                    emp.getFirstname());
+
             return "employee/dashboard";
-        } 
+        }
+
         return "redirect:/admin/fetch-employee";
     }
 
-    @GetMapping ("employee-list")
+    @GetMapping("employee-list")
     public String employeeList(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "admin/employeeList";

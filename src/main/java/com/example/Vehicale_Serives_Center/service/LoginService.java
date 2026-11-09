@@ -50,4 +50,17 @@ public class LoginService {
     public String encryptPassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+    // ADDED: Reset password using Login ID
+    public boolean resetPassword(int loginId, String newPassword) {
+        Optional<Login> login = loginRepository.findById(loginId);
+        if (login.isPresent()) {
+            Login user = login.get();
+            // Encrypt new password using BCrypt
+            user.setPassword(passwordEncoder.encode(newPassword));
+            loginRepository.save(user);
+            return true;
+        }
+        return false;
+    }
 }

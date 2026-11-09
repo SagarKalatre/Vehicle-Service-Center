@@ -2,69 +2,155 @@
 pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Update Employee</title>
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
-    <h2>Update Employee Details</h2>
+    <div class="dashboard-layout">
 
-    <form action="${pageContext.request.contextPath}/admin/update-employee"
-          method="post">
+        <aside class="sidebar">
 
-        Employee ID:
-        <input type="number" name="employeeId"
-               value="${employee.employeeId}" readonly>
-        <br><br>
+            <h3>ADMIN PANEL</h3>
 
-        First Name:
-        <input type="text" name="firstname"
-               value="${employee.firstname}" required>
-        <br><br>
+            <a href="${pageContext.request.contextPath}/admin/dashboard">
+                Dashboard
+            </a>
 
-        Middle Name:
-        <input type="text" name="middlename"
-               value="${employee.middlename}">
-        <br><br>
+            <a href="${pageContext.request.contextPath}/admin/add-employee">
+                Add Employee
+            </a>
 
-        Last Name:
-        <input type="text" name="lastname"
-               value="${employee.lastname}" required>
-        <br><br>
+            <a href="${pageContext.request.contextPath}/admin/employee-list"
+               class="active">
+                View Employees
+            </a>
 
-        Phone 1:
-        <input type="text" name="phone_1"
-               value="${employee.phone_1}">
-        <br><br>
+            <a href="${pageContext.request.contextPath}/admin/fetch-employee">
+                Manage Employees
+            </a>
 
-        Phone 2:
-        <input type="text" name="phone_2"
-               value="${employee.phone_2}">
-        <br><br>
+            <a href="${pageContext.request.contextPath}/admin/delete-employee">
+                Delete Employee
+            </a>
 
-        Email:
-        <input type="email" name="emailId"
-               value="${employee.emailId}">
-        <br><br>
+        </aside>
 
-        DOB:
-        <input type="date" name="DOB"
-               value="${employee.DOB}">
-        <br><br>
+        <main class="dashboard-content">
 
-        Gender:
-        <select name="gender">
-            <option value="Male" ${employee.gender == 'Male' ? 'selected' : ''}>Male</option>
-            <option value="Female" ${employee.gender == 'Female' ? 'selected' : ''}>Female</option>
-            <option value="Other" ${employee.gender == 'Other' ? 'selected' : ''}>Other</option>
-        </select>
-        <br><br>
+            <h1>Update Employee</h1>
 
-        <button type="submit">Update Employee</button>
+            <p class="dashboard-subtitle">
+                Update the employee's personal information.
+            </p>
 
-    </form>
+            <div class="form-card">
+
+                <h2>Employee Information</h2>
+
+                <form action="${pageContext.request.contextPath}/admin/update-employee"
+                      method="post">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Employee ID</label>
+                            <input type="number" name="employeeId"
+                                   value="${employee.employeeId}" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>First Name *</label>
+                            <input type="text" name="firstname"
+                                   value="${employee.firstname}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" name="middlename"
+                                   value="${employee.middlename}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last Name *</label>
+                            <input type="text" name="lastname"
+                                   value="${employee.lastname}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone 1</label>
+                            <input type="text" name="phone_1"
+                                   value="${employee.phone_1}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone 2</label>
+                            <input type="text" name="phone_2"
+                                   value="${employee.phone_2}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="emailId"
+                                   value="${employee.emailId}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" name="DOB"
+                                   value="${employee.DOB}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+
+                            <select name="gender">
+                                <option value="Male"
+                                    ${employee.gender == 'Male' ? 'selected' : ''}>
+                                    Male
+                                </option>
+
+                                <option value="Female"
+                                    ${employee.gender == 'Female' ? 'selected' : ''}>
+                                    Female
+                                </option>
+
+                                <option value="Other"
+                                    ${employee.gender == 'Other' ? 'selected' : ''}>
+                                    Other
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button type="submit">
+                            Update Employee
+                        </button>
+
+                        <a href="${pageContext.request.contextPath}/admin/employee-list"
+                           class="cancel-btn">
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
 
 </body>
 </html>

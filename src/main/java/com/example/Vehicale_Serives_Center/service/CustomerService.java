@@ -10,12 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.Vehicale_Serives_Center.dao.CustomerRepository;
 import com.example.Vehicale_Serives_Center.model.Customer;
 
-
-@Service 
-@Transactional 
+@Service
+@Transactional
 public class CustomerService {
 
-    @Autowired 
+    @Autowired
     public CustomerRepository customerRepository;
 
     public void addCustomer(Customer customer) {
@@ -32,5 +31,9 @@ public class CustomerService {
 
     public void deleteCustomer(int customerId) {
         customerRepository.deleteById(customerId);
+    }
+
+    public Iterable<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }

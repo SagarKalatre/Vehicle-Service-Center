@@ -41,7 +41,7 @@ public class EmployeeController {
     @PostMapping("/add-customer")
     public String addCustomer(@ModelAttribute Customer customer) {
         customerService.addCustomer(customer);
-        return "redirect:/admin/add-employee";
+        return "redirect:/employee/add-vehicle";
     }
 
     @GetMapping("/update-customer")
@@ -99,7 +99,7 @@ public class EmployeeController {
     // delete
     @GetMapping("/delete-customer")
     public String deleteCustomerPage() {
-        return "employee/deletecustomer";
+        return "employee/deleteCustomer";
     }
 
     @PostMapping("/delete-customer")
@@ -117,7 +117,8 @@ public class EmployeeController {
     // Add Vehicle
 
     @GetMapping("/add-vehicle")
-    public String addVehiclePage() {
+    public String addVehiclePage(Model model) {
+        model.addAttribute("customers", customerService.getAllCustomers());
         return "employee/addVehicle";
     }
 
@@ -158,7 +159,8 @@ public class EmployeeController {
     // Fetch Vehicle
 
     @GetMapping("/fetch-vehicle")
-    public String fetchVehiclePage() {
+    public String fetchVehiclePage(Model model) {
+        model.addAttribute("vehicles", vehicleService.getAllVehicles());
         return "employee/fetchVehicle";
     }
 

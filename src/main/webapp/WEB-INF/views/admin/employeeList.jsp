@@ -9,51 +9,145 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Employee List</title>
+    <title>Employee Management</title>
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 </head>
+
 <body>
 
-    <h2>All Employees</h2>
+    <div class="dashboard-layout">
 
-    <table border="1" cellpadding="10">
+        <!-- Admin Sidebar -->
+        <aside class="sidebar">
 
-        <tr>
-            <th>Employee ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Action</th>
-        </tr>
+            <h3>ADMIN PANEL</h3>
 
-        <c:forEach var="employee" items="${employees}">
+            <a href="${pageContext.request.contextPath}/admin/dashboard">
+                Dashboard
+            </a>
 
-            <tr>
-                <td>${employee.employeeId}</td>
+            <a href="${pageContext.request.contextPath}/admin/add-employee">
+                Add Employee
+            </a>
 
-                <td>
-                    ${employee.firstname} ${employee.lastname}
-                </td>
+            <a href="${pageContext.request.contextPath}/admin/employee-list"
+               class="active">
+                View Employees
+            </a>
 
-                <td>${employee.emailId}</td>
+            <a href="${pageContext.request.contextPath}/admin/fetch-employee">
+                Manage Employees
+            </a>
 
-                <td>${employee.login.username}</td>
+            <a href="${pageContext.request.contextPath}/admin/delete-employee">
+                Delete Employee
+            </a>
 
-                <td>
-                    <a href="${pageContext.request.contextPath}/admin/employee-portal?employeeId=${employee.employeeId}">
-                        Open Employee Portal
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+
+            <h1>Employee Management</h1>
+
+            <p class="dashboard-subtitle">
+                View all registered employees and access their portals.
+            </p>
+
+            <div class="list-card">
+
+                <!-- Table Header -->
+                <div class="list-card-header">
+
+                    <div>
+                        <h2>All Employees</h2>
+
+                        <p class="dashboard-subtitle">
+                            Registered employee records
+                        </p>
+                    </div>
+
+                    <a href="${pageContext.request.contextPath}/admin/add-employee"
+                       class="primary-link">
+                        + Add Employee
                     </a>
-                </td>
-            </tr>
 
-        </c:forEach>
+                </div>
 
-    </table>
+                <!-- Employee Table -->
+                <div class="table-container">
 
-    <br>
+                    <table>
 
-    <a href="${pageContext.request.contextPath}/admin/dashboard">
-        Back to Admin Dashboard
-    </a>
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
+                                <th>Email Address</th>
+                                <th>Username</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <c:forEach var="employee" items="${employees}">
+
+                                <tr>
+
+                                    <td>
+                                        ${employee.employeeId}
+                                    </td>
+
+                                    <td>
+                                        ${employee.firstname}
+                                        ${employee.lastname}
+                                    </td>
+
+                                    <td>
+                                        ${employee.emailId}
+                                    </td>
+
+                                    <td>
+                                        ${employee.login.username}
+                                    </td>
+
+                                    <td>
+
+                                        <a class="table-action"
+                                           href="${pageContext.request.contextPath}/admin/employee-portal?employeeId=${employee.employeeId}">
+                                            Open Portal →
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                            </c:forEach>
+
+                            <c:if test="${empty employees}">
+
+                                <tr>
+                                    <td colspan="5" class="empty-message">
+                                        No employees found.
+                                    </td>
+                                </tr>
+
+                            </c:if>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
 
 </body>
 </html>
