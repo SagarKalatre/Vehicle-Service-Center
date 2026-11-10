@@ -1510,7 +1510,6 @@ tr:hover td {
 
 
 
-
 /* =========================================
    HOME PAGE BACKGROUND IMAGE
 ========================================= */
@@ -1520,7 +1519,7 @@ tr:hover td {
         linear-gradient(90deg,
             rgba(5, 15, 35, 0.90),
             rgba(5, 15, 35, 0.55)),
-        url("../images/home-bg.jpg.png");
+        url("../images/home-bg.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1537,7 +1536,7 @@ tr:hover td {
     background:
         linear-gradient(rgba(5, 15, 35, 0.60),
             rgba(5, 15, 35, 0.70)),
-        url("../images/login-bg.jpg.png");
+        url("../images/login-bg.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1554,7 +1553,7 @@ tr:hover td {
     background:
         linear-gradient(rgba(5, 15, 35, 0.55),
             rgba(5, 15, 35, 0.65)),
-        url("../images/logout-bg.jpg.png");
+        url("../images/logout-bg.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1582,7 +1581,6 @@ tr:hover td {
 .hero-content {
     max-width: 750px;
 }
-
 
 /* =========================================
    LOGIN FORM - LEFT SIDE POSITION

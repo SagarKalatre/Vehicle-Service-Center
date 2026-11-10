@@ -16,7 +16,7 @@
 
 //     @Autowired
 //     private EmployeeRepository employeeRepository; 
-    
+
 //     // public String addEmployee(Employee employee) {
 //     //     return employeeRepository.save(employee);
 //     // }
@@ -40,7 +40,6 @@
 //         return employeeRepository.save(employee);
 //     }
 // }
-
 
 package com.example.Vehicale_Serives_Center.service;
 
@@ -98,16 +97,39 @@ public class EmployeeService {
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll(
-            Sort.by(Sort.Direction.DESC, "employeeId")
-        );
+                Sort.by(Sort.Direction.DESC, "employeeId"));
     }
 
     public void deleteEmployee(int employeeId) {
-        employeeRepository.deleteById(employeeId);
+
+        Optional<Employee> employeeOptional = employeeRepository.findById(employeeId);
+
+        if (employeeOptional.isPresent()) {
+
+            Employee employee = employeeOptional.get();
+
+            Login login = employee.getLogin();
+
+            // CHANGED: Clear both sides of the relationship
+            employee.setLogin(null);
+
+            if (login != null) {
+                login.setEmployee(null);
+            }
+
+            // CHANGED: Delete employee first
+            employeeRepository.delete(employee);
+            employeeRepository.flush();
+
+            // CHANGED: Delete associated login account
+            if (login != null) {
+                loginRepository.delete(login);
+            }
+        }
     }
 
     public Employee updateEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
-    
+
 }

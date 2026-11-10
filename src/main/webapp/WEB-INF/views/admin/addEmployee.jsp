@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
                         <div class="form-group">
                             <label>First Name *</label>
                             <input type="text"
-                                   name="firstName"
+                                   name="firstname"
                                    placeholder="Enter first name"
                                    required>
                         </div>
@@ -79,14 +79,14 @@ pageEncoding="UTF-8"%>
                         <div class="form-group">
                             <label>Middle Name</label>
                             <input type="text"
-                                   name="middleName"
+                                   name="middlename"
                                    placeholder="Enter middle name">
                         </div>
 
                         <div class="form-group">
                             <label>Last Name *</label>
                             <input type="text"
-                                   name="lastName"
+                                   name="lastname"
                                    placeholder="Enter last name"
                                    required>
                         </div>
@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
                         <div class="form-group">
                             <label>Phone Number 1 *</label>
                             <input type="tel"
-                                   name="phone1"
+                                   name="phone_1"
                                    placeholder="Enter primary phone number"
                                    required>
                         </div>
@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
                         <div class="form-group">
                             <label>Phone Number 2</label>
                             <input type="tel"
-                                   name="phone2"
+                                   name="phone_2"
                                    placeholder="Enter alternate phone number">
                         </div>
 
@@ -117,7 +117,7 @@ pageEncoding="UTF-8"%>
                         <div class="form-group">
                             <label>Date of Birth *</label>
                             <input type="date"
-                                   name="dateOfBirth"
+                                   name="DOB"
                                    required>
                         </div>
 

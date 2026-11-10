@@ -72,7 +72,7 @@ public class AdminController {
 
         try {
             Employee savedEmployee = employeeService.addEmployee(employee);
-            model.addAttribute("message", savedEmployee);
+            model.addAttribute("employee", savedEmployee);
             return "admin/employeeAdded";
         } catch (IllegalArgumentException e) {
             model.addAttribute("message", e.getMessage());

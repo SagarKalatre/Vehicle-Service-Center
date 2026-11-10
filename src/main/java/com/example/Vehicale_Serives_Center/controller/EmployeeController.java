@@ -80,19 +80,29 @@ public class EmployeeController {
 
     // fetch
     @GetMapping("/fetch-customer")
-    public String fetchCustomerPage() {
+    public String fetchCustomerPage(Model model) {
+
+        // ADDED: Fetch all registered customers
+        model.addAttribute("customers", customerService.getAllCustomers());
+
         return "employee/fetchCustomer";
     }
 
     @PostMapping("/fetch-customer")
     public String fetchCustomer(@RequestParam int customerId, Model model) {
+
         Optional<Customer> customer = customerService.getCustomerById(customerId);
 
         if (customer.isPresent()) {
             model.addAttribute("customer", customer.get());
             return "employee/customerDetails";
         }
+
         model.addAttribute("message", "Customer Not Found..!");
+
+        // ADDED: Keep all customers visible after an unsuccessful search
+        model.addAttribute("customers", customerService.getAllCustomers());
+
         return "employee/fetchCustomer";
     }
 
