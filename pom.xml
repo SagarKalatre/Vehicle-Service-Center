@@ -11,6 +11,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo_project</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name />
 	<description />
@@ -36,6 +37,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<!-- Embedded Tomcat for executable WAR deployment -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Spring Data JPA + Hibernate -->
