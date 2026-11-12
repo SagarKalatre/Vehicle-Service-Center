@@ -11,5 +11,4 @@ public class DemoProjectApplication extends SpringBootServletInitializer {
         SpringApplication.run(DemoProjectApplication.class, args);
         System.out.println("Application Starts........");
     }
-
 }

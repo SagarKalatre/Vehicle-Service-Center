@@ -242,8 +242,11 @@ public class EmployeeController {
     // Fetch Service Job Card
 
     @GetMapping("/fetch-service")
-    public String fetchServicePage() {
-        return "employee/fetchService";
+    public String fetchServicePage(Model model) {
+        model.addAttribute("services", serviceJobCardService.getAllServices());
+
+        return "employee/fetchServiceJobCard";
+        // return "employee/fetchService";
     }
 
     @PostMapping("/fetch-service")
